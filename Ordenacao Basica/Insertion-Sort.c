@@ -3,22 +3,14 @@
 #include <time.h>
 #define MAX 10
 // INSERTION SORT
-void insertion_sort(int vet[], int t){
-  int i, j, atual, inicio, meio, fim;
-  for(i=1; i<t; i++){
-    atual = vet[i];
-    inicio = 0;
-    fim = i;
-    while(inicio <= fim){
-      meio = (inicio+fim)/2;
-      if(vet[meio] > vet[i]){
-        fim = meio - 1;
-      }else if(vet[meio] < vet[i]){
-        inicio = meio + 1;    
-      }else{
-        vet[i] = meio;
-      }
-    }   
+void insertion_sort (int vet[], int tamanho) {
+  int i, j, aux;
+  for (i = 1; i < tamanho; i++) {
+    aux = vet[i];
+    for (j = i; (j > 0) && (aux < vet[j - 1]); j--){
+      vet[j] = vet[j - 1];
+    }
+    vet[j] = aux;
   }
 }
 int main()
